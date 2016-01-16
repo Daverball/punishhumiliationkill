@@ -1,5 +1,6 @@
 #include <sourcemod>
 #include <sdktools_functions>
+#include <tf2>
 
 #define PLUGIN_VERSION		"1.0.0"
 
@@ -43,6 +44,7 @@ public Action Event_PlayerDeath(Event:event, const String:name[], bool:dontBroad
 		return Plugin_Handled;
 	}
 
+	TF2_StunPlayer(client_id, 1.0, 0.5, TF_STUNFLAG_SLOWDOWN, 0);
 	CreateTimer(0.2, Timer_SlapPlayer, client_id);
 	CreateTimer(0.4, Timer_SlapPlayer, client_id);
 	CreateTimer(0.6, Timer_SlapPlayer, client_id);
